@@ -56,12 +56,37 @@
             position: absolute;
             left: 15px;
         }
+        /* Limitar el tamaño de los contenedores de vídeo */
+        .video-wrapper {
+            max-width: 600px; /* Ancho máximo sugerido para que no sature la pantalla */
+            margin: 15px auto; /* Centrado con margen vertical */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+        }
 
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
         .light { width: 12px; height: 12px; border-radius: 50%; }
         .close { background-color: #ff5f56; border: 0.5px solid #e0443e; }
         .minimize { background-color: #ffbd2e; border: 0.5px solid #dea123; }
         .maximize { background-color: #27c93f; border: 0.5px solid #1aab29; }
-
+        .exercise-title { color: var(--terminal-green); font-weight: bold; margin-top: 20px; display: block; text-decoration: underline; }
+        .step-label { color: var(--accent-blue); font-weight: bold; }
         .title-text {
             width: 100%;
             text-align: center;
@@ -75,7 +100,7 @@
 
         .terminal-content { padding: 25px; min-height: 550px; position: relative; }
 
-        #ascii-container { display: none; margin-bottom: 20px; text-align: center; }
+        #ascii-container { display: none; margin-bottom: 20px; text-align: letf; }
         .ascii-main { font-size: 5px; line-height: 1.1; white-space: pre; text-align: center; margin: 0 auto; }
         .ascii-subtitle { display: block; text-align: center; color: var(--accent-blue); font-size: 16px; font-weight: bold; margin: 15px 0; }
         .ascii-ia-img { font-size: 4px; line-height: 1.2; white-space: pre; width: fit-content; margin: 20px auto; color: var(--terminal-green); }
@@ -86,6 +111,7 @@
             font-size: 12px;
             margin-top: 5px;
             font-style: italic;
+            text-align: center;
         }
 
         #boot-log { font-size: 14px; margin-bottom: 20px; }
@@ -97,7 +123,7 @@
         #pass-input {
             background: transparent;
             border: none;
-            color: var(--terminal-green);
+            color: var(--accent-blue);
             outline: none;
             width: 400px;
             caret-color: white;
@@ -126,6 +152,7 @@
             .ascii-main { font-size: 3px; }
             .ascii-ia-img { font-size: 2px; }
             .ascii-characters-footer { font-size: 7px; }
+
         }
     </style>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -250,59 +277,82 @@
                                         <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Refik Anadol</h4>
                                         <p>Pionero en la estética de los "datos fluidos". Utiliza redes neuronales para transformar archivos históricos y datos ambientales en esculturas de datos dinámicas.</p>
                                         <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/5Y384U-bOJo?si=8D3Srfem-TejnZgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                            </div>
+                                          <div class="video-wrapper">
+  <div class="video-responsive">
+      <iframe src="https://www.youtube.com/embed/5Y384U-bOJo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+  </div> </div>
                                         </div>
                                         <span class="author-comment">// Unsupervised - Machine Hallucinations, 2022 | MoMA </span>
                                         <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Mario Klingemann</h4>
                                         <p>Figura clave en el uso de GANs (Redes Generativas Antagónicas). Su trabajo cuestiona la percepción humana y la autonomía de las máquinas en el proceso creativo.</p>
                                         <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NGyovqrTrlE?si=-O7Icvxfz4vka1uT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                            </div>
+                                          <div class="video-responsive">
+                                              <iframe src="https://www.youtube.com/embed/NGyovqrTrlE?si=-O7Icvxfz4vka1uT"
+                                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                      allowfullscreen></iframe>
+                                          </div> </div>
+
                                         </div>
                                         <span class="author-comment">// Exhibited at "Cyborg Subjects", 27/05/2020 to 24/07/2020</span>
                                         <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Sougwen Chung</h4>
                                         <p>Investigadora y artista que explora la colaboración humano-robot a través del dibujo mimético y la interpretación de señales biométricas.</p>
                                         <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                                              <iframe width="560" height="315" src="https://www.youtube.com/embed/8ZnuuFAFaFo?si=Le7E1R3WWCewPfwu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                            </div>
+                                          <div class="video-responsive">
+                                              <iframe src="https://www.youtube.com/embed/8ZnuuFAFaFo?si=Le7E1R3WWCewPfwu"
+                                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                      allowfullscreen></iframe>
+                                          </div>
+
                                         </div>
                                         <span class="author-comment">// Reuters: Meet the Canadian artist who paints with robots</span>
                                         <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Anna Ridler</h4>
-                                        <p>Destaca por crear sus propios datasets manuales, vinculando procesos artesanales con el entrenamiento de modelos de IA para reflexionar sobre el tiempo y la memoria.</p>
-                                        <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                                              <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/399861718?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Anna Ridler - Mosaic Virus"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-                                            </div>
-                                        </div>
-                                        <span class="author-comment">// Interviewed in Helsinki at Network Effects exhibition, Oodi, Helsinki.</span>
-                                        <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Futuro hecho a mano</h4>
+<p>Destaca por crear sus propios datasets manuales...</p>
+<div class="video-wrapper">
+    <div class="video-responsive">
+        <iframe src="https://player.vimeo.com/video/399861718?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                title="Anna Ridler - Mosaic Virus"></iframe>
+    </div>
+</div>
+<span class="author-comment">// Interviewed in Helsinki at Network Effects exhibition.</span>
+<h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Futuro hecho a mano</h4>
                                         <p>Colectivo que busca revalorizar el error y la huella táctil en la era de la perfección algorítmica, hibridando fabricación digital y artesanía tradicional.</p>
                                         <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                                            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/FNs-CkC0ZsE?si=vbrlvvyNj_sXjzDT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                            </div>
+                                          <div class="video-responsive">
+                                              <iframe src="https://www.youtube.com/embed/FNs-CkC0ZsE?si=vbrlvvyNj_sXjzDT"
+                                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                      allowfullscreen></iframe>
+                                          </div>
+
                                         </div>
                                         <span class="author-comment">// Conversatorio ‘¿Quién define la estética del futuro? El sesgo de la IA en la imagen’</span>
                                         <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Domestic Data Streamers</h4>
                     <p>Colectivo que humaniza los datos, convirtiendo grandes volúmenes de información abstracta en experiencias tangibles, instalaciones físicas y narrativas comprensibles.</p>
 
                     <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-                        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/pRm7BAnqiis?si=WXCg96jEsw3_1MGV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
+                      <div class="video-responsive">
+                          <iframe src="https://www.youtube.com/embed/pRm7BAnqiis?si=WXCg96jEsw3_1MGV"
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowfullscreen></iframe>
+                      </div>
+
+
+
                     </div>
                     <span class="author-comment">// Project: Synthetic Memories - Reconstructing the past with AI.</span>
                     <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Algorave</h4>
 <p>Abreviatura de "rave algorítmico", es un evento donde la gente baila al ritmo de música generada mediante algoritmos, utilizando la técnica de codificación en vivo (live coding).</p>
 
 <div style="margin: 15px 0; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: #000;">
-    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/NM3HqdP8NIg?si=duw1sU2EVRXGWZC9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+
+  <div class="video-responsive">
+      <iframe src="https://www.youtube.com/embed/NM3HqdP8NIg?si=duw1sU2EVRXGWZC9"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+  </div>
+
 </div>
 <span class="author-comment">// Executing: live_coding_session.sh</span>
                                 </details>
@@ -357,36 +407,201 @@
 
 <p> Respecto al derecho neuronal y a la privacidad aplicados a nuestro campo, podemos percibir como es necesario proteger nuestra integridad psíquica y la privacidad de nuestros datos personales junto con nuestras obras artísticas pre-IA.</p>
 <br><br>
-<p> Más áun en un mundo donde convergen la nueva IA generativa y gente con dudoso nivel ético y moral. </p>
+<p> Más aún en un mundo donde convergen la nueva IA generativa y gente con dudoso nivel ético y moral. </p>
 <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DRuqNOFiip-/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DRuqNOFiip-/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DRuqNOFiip-/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida de A. M. Markova ♡ | Ilustradora (@markovart_)</a></p></div></blockquote>
 <script async src="//www.instagram.com/embed.js"></script>
     </div>
             </details>
 
             <details>
-                <summary>04. Procesos creativos híbridos</summary>
-                <div class="inner-content">Metodologías para integrar la IA en el flujo de trabajo plástico tradicional.</div>
-            </details>
+    <summary>04. Procesos creativos híbridos</summary>
+    <div class="inner-content">
+        <p>La hibridación no es solo usar software; es establecer un diálogo donde el artista humano mantiene el control semántico y estético mientras la IA expande las posibilidades técnicas.</p>
+
+        <h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Flujos de trabajo simbióticos</h4>
+        <ul style="list-style-type: '⚡ '; padding-left: 20px;">
+            <li style="margin-bottom: 10px;">
+                <b style="color: var(--terminal-green);">Ideación Aumentada:</b> Uso de modelos de lenguaje y difusión para superar el "bloqueo del lienzo en blanco" y generar bocetos rápidos de composición.
+            </li>
+            <li style="margin-bottom: 10px;">
+                <b style="color: var(--terminal-green);">Refinamiento Manual:</b> Intervención física o digital sobre resultados generados por IA (pintura sobre impresión, retoque de capas, fotomontaje).
+            </li>
+            <li style="margin-bottom: 10px;">
+                <b style="color: var(--terminal-green);">Control Paramétrico:</b> Uso de herramientas como <i>ControlNet</i> o <i>Inpainting</i> para dirigir la IA hacia una visión artística específica en lugar de depender del azar.
+            </li>
+        </ul>
+
+        <div style="background: #2c2c2e; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid var(--accent-blue);">
+            <p style="margin: 0; font-size: 13px;">
+                <span style="color: var(--accent-blue);">[NOTA_TECNICA]:</span> El artista híbrido ya no solo "hace", sino que "cura" y "dirige". La obra final es el resultado de una iteración constante entre la intención humana y la sugerencia algorítmica.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <pre style="font-size: 8px; color: var(--comment-grey); line-height: 1;">
+     HUMANO + MÁQUINA = CO-CREACIÓN
+      (🧠)  <------>  (🤖)
+        \            /
+         \    🎨    /
+          \________/</pre>
+            <span class="author-comment">// Esquema de interacción intercreativa</span>
+        </div>
+    </div>
+</details>
+
+<details>
+<summary>05. Intercreatividad</summary>
+<div class="inner-content">
+<p>El término <i>"Intercreatividad"</i>, acuñado por <b>Tim Berners-Lee</b>, define la capacidad de los usuarios para construir juntos en la red. En la era de la IA, este concepto se expande: ya no solo colaboramos entre humanos, sino que cocreamos con redes neuronales que contienen el poso cultural de la humanidad.</p>
+
+<div style="border: 1px solid var(--border-color); padding: 15px; margin: 20px 0; border-radius: 4px;">
+<h4 style="color: var(--accent-blue); margin-top: 0;">📚 Referencia Fundamental</h4>
+<p style="font-size: 14px;">
+    "La red no es solo un medio para descargar información, sino un espacio para crear juntos."
+</p>
+<a href="https://archive.org/details/tejiendo-la-red" target="_blank" style="color: var(--terminal-green); text-decoration: none; font-weight: bold; display: inline-block; border-bottom: 1px dashed var(--terminal-green);">
+    > Leer: Tejiendo la Red (Tim Berners-Lee)
+</a>
+</div>
+
+<h4 style="color: var(--accent-blue);">➜ La IA como Nodo de Intercreatividad</h4>
+<ul style="list-style-type: '🌐 '; padding-left: 20px;">
+<li style="margin-bottom: 10px;">
+    <b style="color: var(--terminal-green);">Cerebro Colectivo:</b> Los modelos generativos funcionan como un archivo vivo que sintetiza millones de ideas previas, permitiéndonos iterar sobre la base del conocimiento compartido.
+</li>
+<li style="margin-bottom: 10px;">
+    <b style="color: var(--terminal-green);">Código Abierto y Comunidad:</b> La verdadera potencia de la IA actual reside en herramientas <i>open-source</i> que permiten a artistas y programadores modificar y compartir sus propios modelos.
+</li>
+<li style="margin-bottom: 10px;">
+    <b style="color: var(--terminal-green);">Democratización Técnica:</b> Reduce la barrera de entrada para que perfiles no técnicos puedan materializar visiones estéticas complejas a través del lenguaje.
+</li>
+</ul>
+
+<p style="margin-top: 20px; font-style: italic; color: var(--comment-grey); font-size: 12px;">
+// "Weaving the Web": De la World Wide Web a la World Wide Intelligence.
+</p>
+</div>
+</details>
 
             <details>
-                <summary>05. Intercreatividad</summary>
-                <div class="inner-content">Tim Berners-Lee y la nueva era.</div>
-            </details>
+    <summary>06. ¿Y el aula?</summary>
+    <div class="inner-content">
+        <p>La adaptación pedagógica en Artes Plásticas requiere un enfoque que combine la técnica tradicional con la alfabetización algorítmica.</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; border: 1px solid var(--border-color);">
+            <thead>
+                <tr style="background-color: #2c2c2e; color: var(--terminal-green);">
+                    <th style="padding: 10px; border: 1px solid var(--border-color); text-align: left;">Tendencia</th>
+                    <th style="padding: 10px; border: 1px solid var(--border-color); text-align: left;">Enfoque Educativo</th>
+                    <th style="padding: 10px; border: 1px solid var(--border-color); text-align: left;">Ejemplo Práctico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); color: var(--accent-blue); font-weight: bold;">Pensamiento Crítico</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color);">Analizar los <b>sesgos</b> de la IA (género, raza, cultura).</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); font-style: italic; color: #d1d1d6;">Pedir a la IA que genere "un científico" y debatir por qué casi siempre sale un hombre blanco con bata.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); color: var(--accent-blue); font-weight: bold;">Aprendizaje Basado en Proyectos (ABP)</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color);">Usar la IA como <b>asistente de ideación</b>.</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); font-style: italic; color: #d1d1d6;">Crear el <i>storyboard</i> de un cortometraje o el concepto de una escultura antes de fabricarla físicamente.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); color: var(--accent-blue); font-weight: bold;">Hibridación Técnica</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color);">Mezclar lo analógico con lo digital.</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); font-style: italic; color: #d1d1d6;">Generar una textura con IA, imprimirla y usarla como base para un grabado o una pintura al óleo.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); color: var(--accent-blue); font-weight: bold;">Prompt-Literacy</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color);">El lenguaje como herramienta de precisión.</td>
+                    <td style="padding: 10px; border: 1px solid var(--border-color); font-style: italic; color: #d1d1d6;">Enseñar que escribir un buen <i>prompt</i> requiere conocer historia del arte, óptica y composición.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 15px; color: var(--comment-grey); font-size: 11px;">// Fuente: Metodologías de aula para la Era Generativa.</p>
+    </div>
+</details>
 
             <details>
-                <summary>06. ¿Y el aula?</summary>
-                <div class="inner-content">Adaptación pedagógica, desafíos y oportunidades en la enseñanza de las Artes Plásticas.</div>
-            </details>
+    <summary>07. Atrévete</summary>
+    <div class="inner-content">
+        <p>> Ejecutando protocolo: romper_barrera_tecnologica.sh...</p>
+        <p>La IA no es un sustituto, es un material maleable. Aquí tienes 4 dinámicas para integrarla en el aula sin miedo:</p>
 
-            <details>
-                <summary>07. Atrévete</summary>
-                <div class="inner-content">Propuestas prácticas y ejercicios para romper la barrera del miedo tecnológico.</div>
-            </details>
+        <span class="exercise-title">01_EL_CADÁVER_EXQUISITO_HÍBRIDO</span>
+        <p><span class="step-label">➜ LA PRÁCTICA:</span> Se dobla un papel en tres. En la parte superior, el alumno dibuja una cabeza a mano. Tras ocultarla, el compañero escribe un <strong>prompt</strong> para un torso fantástico que se genera con IA. Finalmente, un tercer alumno dibuja las piernas a mano inspirándose en la imagen digital.</p>
+        <p style="color: var(--comment-grey);">// Objetivo: Convertir la IA en un compañero de juego lúdico.</p>
 
-            <details>
-                <summary>08. Cajón desastre</summary>
-                <div class="inner-content">Recursos adicionales, enlaces de interés y herramientas experimentales.</div>
-            </details>
+        <span class="exercise-title">02_LABORATORIO_DE_ARREPENTIMIENTO</span>
+        <p><span class="step-label">➜ LA PRÁCTICA:</span> Fotografía una obra analógica en proceso. Usa una IA de <strong>relleno generativo</strong> para previsualizar cambios drásticos: "¿Y si el fondo fuera un bosque incendiado?" o "¿Cómo quedaría con colores complementarios?".</p>
+        <p style="color: var(--comment-grey);">// Objetivo: Usar la IA como simulador de riesgos antes de aplicar el pincel real.</p>
+
+        <span class="exercise-title">03_DESAFÍO_DEL_PROMPT_FALLIDO</span>
+        <p><span class="step-label">➜ LA PRÁCTICA:</span> Concurso para generar la "peor imagen posible". Los asistentes deben forzar a la IA a cometer errores mediante contradicciones estéticas (ej: "un vacío cubista de mármol con textura de suspiro").</p>
+        <p style="color: var(--comment-grey);">// Objetivo: Desmitificar la perfección de la IA y reírse del algoritmo.</p>
+
+        <span class="exercise-title">04_CAMINO_INVERSO_IA_AL_PINCEL</span>
+        <p><span class="step-label">➜ LA PRÁCTICA:</span> Genera una imagen compleja por IA en 10 segundos. El reto es usar carboncillo físico para capturar, en solo 10 minutos, únicamente la <strong>esencia de la luz</strong> y la atmósfera de esa imagen digital.</p>
+        <p style="color: var(--comment-grey);">// Objetivo: Revalorizar el trazo único y la interpretación humana.</p>
+
+        <div style="margin-top: 20px; padding: 10px; border: 1px solid var(--accent-blue); background: rgba(10, 132, 255, 0.1);">
+            <span style="color: var(--accent-blue);">[CONSEJO_DOCENTE]:</span> La IA no va a sustituir al artista, pero el artista que usa la IA sustituirá al que no lo hace.
+        </div>
+    </div>
+</details>
+
+<details>
+<summary>08. Cajón desastre</summary>
+<div class="inner-content">
+<p>Repositorio de herramientas experimentales, lecturas críticas y plataformas para profundizar en la intercreatividad y la IA generativa.</p>
+
+<h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Herramientas de Generación y Edición</h4>
+<ul style="list-style-type: '🛠️ '; padding-left: 20px;">
+<li style="margin-bottom: 10px;">
+    <a href="https://www.midjourney.com" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Midjourney</a>: Referente en alta calidad estética y exploración de estilos artísticos.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://stability.ai/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Stable Diffusion</a>: El estándar <i>open-source</i> para control total y uso de LoRAs.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://runwayml.com/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Runway Gen-3</a>: Herramientas punteras para la generación y edición de video con IA.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://leonardo.ai/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Leonardo.ai</a>: Interfaz intuitiva para generación de imágenes con modelos personalizados.
+</li>
+</ul>
+
+<h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Ética, Protección y Datos</h4>
+<ul style="list-style-type: '⚖️ '; padding-left: 20px;">
+<li style="margin-bottom: 10px;">
+    <a href="https://haveibeentrained.com/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Have I Been Trained?</a>: Verifica si tus obras han sido usadas para entrenar modelos de IA.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://glaze.cs.uchicago.edu/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Glaze Project</a>: Herramienta para proteger el estilo artístico de los artistas frente al "mimetismo" de la IA.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://artsexperiment.withgoogle.com/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Google Arts & Culture Experiments</a>: Cruce entre patrimonio cultural y algoritmos.
+</li>
+</ul>
+
+<h4 style="color: var(--accent-blue); margin-top: 20px;">➜ Formación y Comunidad</h4>
+<ul style="list-style-type: '📚 '; padding-left: 20px;">
+<li style="margin-bottom: 10px;">
+    <a href="https://promptingguide.ai/es" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Prompt Engineering Guide</a>: Guía completa para entender cómo hablarle a las máquinas.
+</li>
+<li style="margin-bottom: 10px;">
+    <a href="https://huggingface.co/" target="_blank" style="color: var(--terminal-green); text-decoration: none;">Hugging Face</a>: La mayor comunidad de modelos y datasets abiertos del mundo.
+</li>
+</ul>
+
+<div style="margin-top: 30px; border: 1px dashed var(--comment-grey); padding: 10px; text-align: center;">
+<span style="color: var(--error-red);">[!]</span> <b>RECUERDA:</b> La mejor herramienta sigue siendo tu criterio artístico.
+<br>
+</div>
+</div>
+</details>
         </div>
     </div>
 </div>
@@ -419,27 +634,56 @@
 
     const subText = "EN EL AULA DE ARTES PLÁSTICAS";
 
-    const iaImg = `                                      ===
-                                    *#+=*#* =+#=-+#-+              ==
-                                   =*%==*%=+       ==============+        %%
-                           %%%@    +++*+*++* ---+*###===####+=++     %#%%
-                           %%%       ++*** =-============+===+      %
-                             %%     =====++      ===:-=--**=-=--===++   #%
-                              %%    ==--==+++     +*-:#%%*-:-*#%*-+++* %
-                               %%   ======++* --%%%#++-%%%*-+++* %%
-                                %%*=====+**%%%%%#+---#%%%%%#+--+*%%%%%
-                                 %%%%%#*+++***#%%%%%#*+++++*#%%%%%#
-                                     #%%%%%#*+++++**##%%%%%##*+
-                                          ##%%%%%%%%%##**** *++++**##   #*****##%    #******###
-                                   ******###   ##****########+****###%
-                                   ##***##%#   ########****+****#####%
-                                   #######%%    #############%#######%
-                                    #%%%%%%       ####%%%%%## ##%%%%%%
-                                    %%    %          %         @%
-                                    %%    %%         %          %
-                                    %%    %%         %          %
-                                    %%    %          %         %%
-                                  %%%%    %#%      %%%%        %%%%`;
+    const iaImg = `
+                                                                                     ========
+                                                                                  #****===+**##*
+                                                                                 *#***+=-==***#*+
+                                                                               ==-::--=--=-:::-=+++
+                                                                               =--+#%*-==--*#%+-=++
+                                                                               =-=#%%%===-+#%%%=-++                         -================
+                                                                               =--%%%%-==-+%%@#-=++                  =============================
+                                                               %               +=--++==+==--+=-=***               -=====----------------============+                   %%%%
+                                                            %%%%%              ++===++++=====+++***            ====----+***####+------=***####*======++              % #%%%%
+                                                             %%##%#%            +++++*##*##*+++**+            =------=**####%%%*=======########%#=====++             %%##%%
+                                                             %%###%%             ++++++++++++***              ==-----=#%#*+================++#%%*=====+++            %%%%%
+                                                               %%%%                 +++*******                ==----===================================+++            %%%
+                                                                 %%                 ===++++++                 ========-::::---+++++++++=-:::::--=======+++           #%%
+                                                                  %%              ===========+++              =======-::::::---=******=::::::----======++++         #%%
+                                                                   %%            ===--=======++++             ======-:::=*##%*---    ::-+**#%*----====+++++        #%%
+                                                                    %%%         ===------====+++++            +++++=:::+####%%%--   :::+*###%%#---=++++++++        %%
+                                                                     %%%       =====---======++++*              ***--:-##%%%%%@*--  ::=####%%%%+--=+++++++*      #%%
+                                                                       %%%     ==============++++*                 :::=%%%%%%%@*-=**+:=%%%%%%%%+--=++++++**     %%%
+                                                                        %%%%   =============++++**                #=---%%%@@@%%+-**+=--%%%%@@%%=--=++++++***  %%%
+                                                                          %%%  =============++++**           ##%%%#+----%%%%@@#-=*+++=-+%%%%@@+---++++++**** %%%
+                                                                            %%%*============++++**  #%%%%%%%%%%+++++=----+##*+-=**++++=--+**+=-==+*++++****#@%
+                                                                               #+==========++++**#%%%%        +*++===+=-----==**********=----==+**++++*****#
+                                                                               +++========+++++***          ***+===+++++****##*******************+++******#*
+                                                                               ++++======+++++****         ***+==++++++******%%%#######%%%****+++++*******##
+                                                                               ++++++=+++++++****#         **++++++++******####%%%%%%%% ##***+++++*******###
+                                                                               +++++++++++++****##        ***++++++*******###%%          #***++++********###
+                                                                               +++++++++++++***###        ***+++++*******###%%           #***++*********####
+                                                                               +**++++++++*****###        #*************####%%           #**+++********######
+                                                                               ****++++++*****####        ##***********#####%%          ##**++********#######
+                                                                               ******++******#####        ###**********######%##     ####**++********#######%
+                                                                               **************###%#        ######******#################*+=++********#######%#
+                                                                               *##*********#####%%         ######################*****++++********#########%#
+                                                                               #####*****######%%%         ##################************##################%%
+                                                                               ###############%%%%           #############################################%%%
+                                                                                #############%%%%%            ###########################%%%##############%%%
+                                                                                 ##########%%%%%#               #####################%%%%##################%%
+                                                                                  #%%%%%%%%%%%%%                   ######%%%%%%%%%%%#####   ###%%%%%%%%%%%%%%
+                                                                                  %%%######## %%%                       %%  ***+                %%
+                                                                                  %%          %%%                       %%                      %%
+                                                                                  %%           %%                       %%                      %%
+                                                                                  %%           %%                       %%                      %%@
+                                                                                  %%           %%                       %%                      %%@
+                                                                                  %%           %%                       %%                      %%@
+                                                                                  %%           %%                       %%                      %%
+                                                                                  %%#         %%%                       %%                      %%
+                                                                                  %%%         %%%                       %%                      %%
+                                                                               *###%%         %%###*                 ####%%                    %%%###
+                                                                             %%%%%%%%         %%%##%%%             %%%%%%%%                    #%%%#%%%
+                                                                                                                                                                                                                                                 `;
 
     function printBoot() {
         let lineCount = 0;
